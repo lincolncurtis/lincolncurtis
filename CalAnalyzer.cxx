@@ -12,12 +12,11 @@ namespace ldmx {
      
 
         //These values are hard-coded for the v12 detector
-      
-         HcalStartZ_ = ps.getParameter<double>("HcalStartZ_"); //Z position of the start of the back Hcal for the v12 detector
+        HcalStartZ_ = ps.getParameter<double>("HcalStartZ_"); //Z position of the start of the back Hcal for the v12 detector
 
-      	//EcalStartZ_ = ps.getParameter<double>("EcalStartZ_"); 
-      	//PEthresh_ = ps.getParameter<double>("PEthresh_"); //PE threshold for vetoing
-  
+	//EcalStartZ_ = ps.getParameter<double>("EcalStartZ_"); 
+	//PEthresh_ = ps.getParameter<double>("PEthresh_"); //PE threshold for vetoing
+
 	return;
 
     }
@@ -122,9 +121,9 @@ namespace ldmx {
             ecal_simesum = ecal_simesum + energy;
 	    z1=z;
 
-	    if (energy > 1){
-	    std::cout<<energy<<"   ";
-	    }
+	    //  if (energy > 1){
+	    // std::cout<<energy<<"   ";
+	    //   }
 
           }
 	  histograms_.fill("ecalsimenergysum", ecal_simesum);
@@ -208,9 +207,9 @@ namespace ldmx {
 	      histograms_.fill("ecalenergy_ecalz", z, energy);
 	      histograms_.fill("ecalx_ecaly", x, y);
 
-	      if (energy > 1){
-		std::cout<<energy<<" | ";
-		}
+	      // if (energy > 1){
+	      //	std::cout<<energy<<" | ";
+	      //	}
 	      
 
 
@@ -334,3 +333,64 @@ namespace ldmx {
 	   
 	}
 
+
+
+
+
+
+
+
+	/*
+	if(ecal_esum_z >= 200){ 
+          histograms_.fill("ecaltrig_02GeV", z); //mult. ecal_esum_z by 2 for 8 GeV cuts
+        }
+        if(ecal_esum_z >= 3000){
+          histograms_.fill("ecaltrig_30GeV", z);
+        }
+        if(ecal_esum_z >= 4000){
+          histograms_.fill("ecaltrig_40GeV", z);
+        }
+        if(ecal_esum_z >= 5000){
+          histograms_.fill("ecaltrig_50GeV", z);
+        }
+        if(ecal_esum_z >= 6000){
+          histograms_.fill("ecaltrig_60GeV", z);
+        }
+        histograms_.fill("ecalenergysum_ecalz", z, ecal_esum_z);
+	std::cout<<"ok13";
+      }
+
+        return;
+
+
+
+*/
+    }
+
+	
+
+    void CalAnalyzer::onFileOpen(framework::EventFile&) {
+
+        return;
+    }
+
+    void CalAnalyzer::onFileClose(framework::EventFile&) {
+
+
+      std::cout<<i<<"  ";
+
+        return;
+    }
+
+    void CalAnalyzer::onProcessStart() {
+
+        return;
+    }
+
+    void CalAnalyzer::onProcessEnd() {
+
+        return;
+    }
+}
+
+DECLARE_ANALYZER_NS(ldmx, CalAnalyzer)
